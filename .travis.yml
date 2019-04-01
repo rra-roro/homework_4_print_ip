@@ -5,7 +5,6 @@ language: cpp
 # whitelist
 branches:
   only:
-  - review1  
   - master
 
 addons:
@@ -41,7 +40,7 @@ deploy:
   provider: script
   skip_cleanup: true
   on:
-    branch: review1
+    branch: master
   script:
   - curl -T allocator-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -urra-roro:$BINTRAY_API_KEY "https://api.bintray.com/content/rra-roro/otus_homework/allocator/$TRAVIS_BUILD_NUMBER/allocator-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
   
