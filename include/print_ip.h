@@ -3,6 +3,7 @@
 #include <array>
 #include <string_view>
 #include <vector>
+#include <tuple>
 
 // Compile-time ф-ия конвертации числа в массив байт.
 // Cледующие компиляторы выполняют вычиcление этой ф-ии в сompile-time:
@@ -37,7 +38,7 @@ namespace roro_lib
             template <typename T>
             inline void output_ip_from(T& container)
             {
-                  for (size_t i = 0; i < container.size(); i++)
+                  for (std::size_t i = 0; i < container.size(); i++)
                   {
                         std::cout << +container[i];
                         if ((i + 1) != container.size())
@@ -85,22 +86,19 @@ namespace roro_lib
             internal::output_ip_from(vec);
       }
 
-
       template <std::size_t I = 0, typename It, typename... Tp>
-      inline typename std::enable_if< I==sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>&, It&)
+      inline typename std::enable_if<I == sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>&, It&)
       {
       }
 
       template <std::size_t I = 0, typename It, typename... Tp>
-          inline typename std::enable_if< I<sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>& t, It& it)
+          inline typename std::enable_if < I<sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>& t, It& it)
       {
             auto byte_array = internal::GetArrayByteFromValue(std::get<I>(t));
             it = copy(byte_array.begin(), byte_array.end(), it);
 
             for_each<I + 1, It, Tp...>(t, it);
       }
-
-
 
       template <typename T, typename... R>
       constexpr void print_ip(const std::tuple<T, R...>& value)
