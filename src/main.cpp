@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
             print_ip(std::string("192.168.0.10"));
             print_ip(std::vector<char>{ -1, -1, -1, -1 });
             print_ip(std::list<unsigned short>{ 49320, 257 });
-            //	print_ip(std::make_tuple(1, 1, 1, 1));
+            print_ip(std::make_tuple<std::int8_t, std::int8_t, std::int8_t, std::int8_t>(1, 1, 1, 1));
 
       }
       catch (const std::exception& ex)
