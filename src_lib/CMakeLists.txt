@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 if(STATIC_LINK_LIBS)
-        message(STATUS "CMake STATIC_LINK_LIBS = ${STATIC_LINK_LIBS}")        
-        set (Boost_USE_STATIC_LIBS ON)
-        set (Boost_USE_STATIC_RUNTIME ON)        
+        message(STATUS "CMake STATIC_LINK_LIBS = ${STATIC_LINK_LIBS}")            
         if (MSVC)
             string(REPLACE "/MD" "/MT" CMAKE_CXX_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE})
             string(REPLACE "/MD" "/MT" CMAKE_CXX_FLAGS_MINSIZEREL ${CMAKE_CXX_FLAGS_MINSIZEREL})
