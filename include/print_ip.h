@@ -4,6 +4,7 @@
 #include <string_view>
 #include <vector>
 #include <tuple>
+#include <algorithm>
 
 // Compile-time ф-ия конвертации числа в массив байт.
 // Cледующие компиляторы выполняют вычиcление этой ф-ии в сompile-time:
@@ -50,11 +51,11 @@ namespace roro_lib
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
             {
-                  const std::size_t  size_container = container.size() - 1;
-                  for (std::size_t i = 0; i <= size_container; i++)
+                  const std::size_t  end_item = container.size() - 1;
+                  for (std::size_t i = 0; i <= end_item; i++)
                   {
                         os << +container[i];
-                        os << ((i != size_container) ? "." : "\n");
+                        os << ((i != end_item) ? "." : "\n");
                   }
             }
       }
@@ -86,7 +87,7 @@ namespace roro_lib
             for (const auto& item : cont)
             {
                   auto byte_array = internal::GetArrayByteFromValue(item);
-                  It = copy(byte_array.begin(), byte_array.end(), It);
+                  It = std::copy(byte_array.begin(), byte_array.end(), It);
             }
 
             internal::output_ip_from(vec, os);
