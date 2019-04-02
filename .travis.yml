@@ -13,6 +13,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-8
+      - doxygen
 
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
@@ -36,11 +37,19 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
+- doxygen Doxyfile
+
 deploy:
-  provider: script
-  skip_cleanup: true
-  on:
-    branch: master
-  script:
-  - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -urra-roro:$BINTRAY_API_KEY "https://api.bintray.com/content/rra-roro/otus_homework/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
-  
+  - provider: script
+    skip_cleanup: true
+    on:
+      branch: master
+    script:
+      curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -urra-roro:$BINTRAY_API_KEY "https://api.bintray.com/content/rra-roro/otus_homework/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+
+  - provider: pages
+    skip_cleanup: true
+    local_dir: docs/html
+    github_token: $GH_REPO_TOKEN
+    on:
+      branch: master
