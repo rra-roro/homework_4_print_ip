@@ -52,14 +52,14 @@ int main(int argc, char* argv[])
                   return 0;
             }
 
-            print_ip(static_cast<char>(-1));
-            print_ip(static_cast<short>(0));
-            print_ip(static_cast<int>(2130706433));
-            print_ip(static_cast<long long>(8875824491850138409));
-            print_ip(std::string("192.168.0.10"));
-            print_ip(std::vector<char>{ -1, -1, -1, -1 });
-            print_ip(std::list<unsigned short>{ 49320, 257 });
-            print_ip(std::make_tuple<std::int8_t, std::int8_t, std::int8_t, std::int8_t>(1, 1, 1, 1));
+            output_ip(static_cast<char>(-1));
+            output_ip(static_cast<short>(0));
+            output_ip(static_cast<int>(2130706433));
+            output_ip(static_cast<long long>(8875824491850138409));
+            output_ip(std::string("192.168.0.10"));
+            output_ip(std::vector<char>{ -1, -1, -1, -1 });
+            output_ip(std::list<unsigned short>{ 49320, 257 });
+            output_ip(std::make_tuple<std::int8_t, std::int8_t, std::int8_t, std::int8_t>(1, 1, 1, 1));
 
       }
       catch (const std::exception& ex)

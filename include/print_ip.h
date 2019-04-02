@@ -35,16 +35,28 @@ namespace roro_lib
                   }
             }
 
+            template <std::size_t I = 0, typename It, typename... Tp>
+            constexpr void for_each(const std::tuple<Tp...>& t, It& it)
+            {
+                  if constexpr (I < sizeof...(Tp))
+                  {
+                        auto byte_array = GetArrayByteFromValue(std::get<I>(t));
+                        it = copy(byte_array.begin(), byte_array.end(), it);
+
+                        for_each<I + 1, It, Tp...>(t, it);
+                  }
+            }
+
             template <typename T>
-            inline void output_ip_from(T& container)
+            inline void output_ip_from(T& container, std::ostream& os)
             {
                   for (std::size_t i = 0; i < container.size(); i++)
                   {
                         std::cout << +container[i];
                         if ((i + 1) != container.size())
-                              std::cout << ".";
+                              os << ".";
                         else
-                              std::cout << "\n";
+                              os << "\n";
                   }
             }
       }
@@ -53,62 +65,50 @@ namespace roro_lib
 
       template <typename T,
           typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
-      constexpr void print_ip(const T& value)
+      constexpr void output_ip(const T& value, std::ostream& os = std::cout)
       {
             static_assert(std::is_integral<T>::value == true);
 
             auto byte_array = internal::GetArrayByteFromValue(value);
 
-            internal::output_ip_from(byte_array);
+            internal::output_ip_from(byte_array, os);
       }
 
-      void print_ip(std::string_view value)
+      void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
       {
-            std::cout << value << "\n";
+            os << str_ip << "\n";
       }
 
 
       template <typename T, typename Al, template <typename, typename> typename C>
-      constexpr void print_ip(const C<T, Al>& value)
+      constexpr void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
             static_assert(std::is_integral<T>::value == true);
 
-            std::vector<std::uint8_t> vec(sizeof(T) * value.size());
+            std::vector<std::uint8_t> vec(sizeof(T) * cont.size());
 
             auto It = vec.begin();
 
-            for (const auto& item : value)
+            for (const auto& item : cont)
             {
                   auto byte_array = internal::GetArrayByteFromValue(item);
                   It = copy(byte_array.begin(), byte_array.end(), It);
             }
 
-            internal::output_ip_from(vec);
-      }
-
-      template <std::size_t I = 0, typename It, typename... Tp>
-      inline typename std::enable_if<I == sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>&, It&)
-      {
-      }
-
-      template <std::size_t I = 0, typename It, typename... Tp>
-          inline typename std::enable_if < I<sizeof...(Tp), void>::type for_each(const std::tuple<Tp...>& t, It& it)
-      {
-            auto byte_array = internal::GetArrayByteFromValue(std::get<I>(t));
-            it = copy(byte_array.begin(), byte_array.end(), it);
-
-            for_each<I + 1, It, Tp...>(t, it);
+            internal::output_ip_from(vec, os);
       }
 
       template <typename T, typename... R>
-      constexpr void print_ip(const std::tuple<T, R...>& value)
+      constexpr void output_ip(const std::tuple<T, R...>& tp, std::ostream& os = std::cout)
       {
+            static_assert(std::is_integral<T>::value == true);
+
             std::vector<std::uint8_t> vec(sizeof(T) * sizeof...(R) + 1);
             auto it = vec.begin();
 
-            for_each<0, decltype(it)>(value, it);
+            internal::for_each<0, decltype(it)>(tp, it);
 
-            internal::output_ip_from(vec);
+            internal::output_ip_from(vec, os);
       }
 
 }
