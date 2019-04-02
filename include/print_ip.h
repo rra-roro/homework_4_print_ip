@@ -69,16 +69,16 @@ namespace roro_lib
             internal::output_ip_from(byte_array, os);
       }
 
-      void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
+      inline void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
       {
             os << str_ip << "\n";
       }
 
 
       template <typename T, typename Al, template <typename, typename> typename C>
-      constexpr void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
+      void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral<T>::value == true);
+            static_assert(std::is_integral_v<T>, "template parameter type of container should be integral type");
 
             std::vector<std::uint8_t> vec(sizeof(T) * cont.size());
 
@@ -96,7 +96,8 @@ namespace roro_lib
       template <typename T, typename... R>
       constexpr void output_ip(const std::tuple<T, R...>& tp, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral<T>::value == true);
+            static_assert(std::is_integral_v<T>, "all template parameter types of tuple should be the same integral types");
+            static_assert((std::is_same_v<T, R> && ...), "all template parameter types of tuple should be the same integral types");
 
             std::array<std::uint8_t, sizeof(T) * sizeof...(R) + 1> arr = { 0 };
             auto it = arr.begin();
