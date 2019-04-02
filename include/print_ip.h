@@ -42,7 +42,7 @@ namespace roro_lib
                   if constexpr (I < sizeof...(Tp))
                   {
                         auto byte_array = GetArrayByteFromValue(std::get<I>(t));
-                        it = copy(byte_array.begin(), byte_array.end(), it);
+                        it = std::copy(byte_array.begin(), byte_array.end(), it);
 
                         for_each<I + 1, It, Tp...>(t, it);
                   }
