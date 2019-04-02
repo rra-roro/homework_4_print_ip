@@ -24,7 +24,7 @@ if (MSVC AND CNCC_PATH)
 endif()
 
 
-install(PROGRAMS src_test/test_allocator DESTINATION bin)
+install(PROGRAMS src_test/test_print_ip DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
@@ -37,4 +37,4 @@ set(CPACK_PACKAGE_CONTACT rra.roro@gmail.com)
 include(CPack)
 
 enable_testing()
-add_test(test_allocator src_test/test_allocator)
+add_test(test_print_ip src_test/test_print_ip)

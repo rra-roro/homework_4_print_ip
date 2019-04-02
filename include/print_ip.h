@@ -22,13 +22,13 @@ namespace roro_lib
                         return { static_cast<std::uint8_t>(value) };
                   else
                   {
-                        using uT = typename std::make_unsigned<T>::type;
-
                         std::array<std::uint8_t, sizeof(T)> arr = { 0 };
 
-                        for (int i = sizeof(value) - 1; i >= 0; i--)
+                        const std::size_t size_value = sizeof(value) - 1;
+
+                        for (int i = size_value; i >= 0; i--)
                         {
-                              arr[sizeof(value) - i - 1] = static_cast<std::uint8_t>(value >> (i * 8));
+                              arr[size_value - i] = static_cast<std::uint8_t>(value >> (i * 8));
                         }
 
                         return arr;
@@ -48,29 +48,23 @@ namespace roro_lib
             }
 
             template <typename T>
-            inline void output_ip_from(T& container, std::ostream& os)
+            inline void output_ip_from(const T& container, std::ostream& os)
             {
-                  for (std::size_t i = 0; i < container.size(); i++)
+                  const std::size_t  size_container = container.size() - 1;
+                  for (std::size_t i = 0; i <= size_container; i++)
                   {
-                        std::cout << +container[i];
-                        if ((i + 1) != container.size())
-                              os << ".";
-                        else
-                              os << "\n";
+                        os << +container[i];
+                        os << ((i != size_container) ? "." : "\n");
                   }
             }
       }
 
 
-
       template <typename T,
-          typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
+                typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
       constexpr void output_ip(const T& value, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral<T>::value == true);
-
             auto byte_array = internal::GetArrayByteFromValue(value);
-
             internal::output_ip_from(byte_array, os);
       }
 
@@ -103,12 +97,12 @@ namespace roro_lib
       {
             static_assert(std::is_integral<T>::value == true);
 
-            std::vector<std::uint8_t> vec(sizeof(T) * sizeof...(R) + 1);
-            auto it = vec.begin();
+            std::array<std::uint8_t, sizeof(T) * sizeof...(R) + 1> arr = { 0 };
+            auto it = arr.begin();
 
             internal::for_each<0, decltype(it)>(tp, it);
 
-            internal::output_ip_from(vec, os);
+            internal::output_ip_from(arr, os);
       }
 
 }
