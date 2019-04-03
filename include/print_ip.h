@@ -10,12 +10,11 @@ namespace roro_lib
 {
       namespace internal
       {
-            /*!   \brief  Функция  разбивает целочисленное  входное значение  на массив  байт
-                          constexpr ф-ия разбивает целочисленное входное значение на массив байт.
+            /*!   \brief  Constexpr ф-ия разбивает целочисленное  входное значение  на массив  байт            
                           В начале массива размещаются старшие байты целочисленного значения.
 
-                  \param[in] value целочисленное значение, которое мы хотим разбить на байты
-                  \return возвращает массив байт, представляющих исходное значение
+                  \param[in] value -целочисленное значение, которое мы хотим разбить на байты
+                  \return массив байт, представляющих исходное значение
             */
             template <typename T>
             constexpr std::array<std::uint8_t, sizeof(T)> GetArrayByteFromValue(T value)
@@ -37,12 +36,11 @@ namespace roro_lib
                   }
             }
 
-            /*!   \brief  Ф-ия извлекает все значения из tuple и записывает их в позицию полученного итератора.
-                          constexpr ф-ия извлекает все значения из tuple и записывает их
+            /*!   \brief  Constexpr ф-ия извлекает все значения из tuple и записывает их 
                           в позицию полученного итератора
 
-                  \param[in] t  это tuple из которого мы извлекаем значения
-                  \param[inout] it  итератор в позицию которого мы сохраняем значения
+                  \param[in] t  -это tuple из которого мы извлекаем значения
+                  \param[inout] it  -итератор в позицию которого мы сохраняем значения
             */
             template <std::size_t I = 0, typename It, typename... Tp>
             constexpr void get_all_tuple_items(const std::tuple<Tp...>& t, It& it)
@@ -56,12 +54,11 @@ namespace roro_lib
                   }
             }
 
-            /*!   \brief  Ф-ия которая форматирует вывод полученного массива байт.
-                          Ф-ия которая форматирует вывод полученного массива байт,
+            /*!   \brief  Ф-ия которая форматирует вывод полученного массива байт,
                           разделяя выводимые в std::ostream байты точкой.
 
-                  \param[in] container  в котором содержатся выводимые байты
-                  \param[in] os  поток ostream куда мы выводим байты.
+                  \param[in] container  -откуда мы берем байты
+                  \param[in] os  -поток ostream куда мы выводим байты.
             */
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
