@@ -95,7 +95,7 @@ namespace roro_lib
       */
       inline void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
       {
-            os << "12345678" << "\n";
+            os << "12345678 ->" << str_ip << "<-- \n";
             os << str_ip << "\n";
       }
 
