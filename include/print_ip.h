@@ -46,7 +46,8 @@ namespace roro_lib
                   \param[inout] it  -итератор в позицию которого мы сохраняем значения
             */
             template <std::size_t I = 0, typename It, typename... Tp>
-            constexpr void get_all_tuple_items([[maybe_unused]] const std::tuple<Tp...>& t, [[maybe_unused]] It& it)
+            constexpr void get_all_tuple_items([[maybe_unused]] const std::tuple<Tp...>& t,
+                                               [[maybe_unused]] It& it)
             {                  
                   if constexpr (I < sizeof...(Tp))
                   {
@@ -111,12 +112,14 @@ namespace roro_lib
                 typename std::enable_if_t<
                                           std::is_same_v<T, typename C<T, Al>::value_type> &&
                                           std::is_same_v<Al, typename C<T, Al>::allocator_type> &&
-                                          std::is_base_of_v<std::forward_iterator_tag, typename C<T, Al>::iterator::iterator_category> &&
+                                          std::is_base_of_v<std::forward_iterator_tag,
+                                                            typename C<T, Al>::iterator::iterator_category> &&
                                           std::is_member_function_pointer_v<decltype(&C<T, Al>::size)>,
                                           int> = 0>
       void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral_v<T>, "template parameter type of container should be integral type");
+            static_assert(std::is_integral_v<T>,
+                          "template parameter type of container should be integral type");
 
             std::vector<std::uint8_t> vec(sizeof(T) * cont.size());
 
@@ -140,7 +143,8 @@ namespace roro_lib
       template <typename T, typename... R>
       constexpr void output_ip(const std::tuple<T, R...>& tp, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral_v<T> && (std::is_same_v<T, R> && ...), "all template parameter types of tuple should be the same integral types");
+            static_assert(std::is_integral_v<T> && (std::is_same_v<T, R> && ...),
+                          "all template parameter types of tuple should be the same integral types");
 
             std::array<std::uint8_t, sizeof(T) * std::tuple_size_v<std::tuple<T, R...>>> arr = { 0 };
             auto it = arr.begin();
