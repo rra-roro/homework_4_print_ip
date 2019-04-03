@@ -17,7 +17,7 @@ namespace roro_lib
                   \return массив байт, представляющих исходное значение
             */
             template <typename T>
-            constexpr std::array<std::uint8_t, sizeof(T)> GetArrayByteFromValue(T value)
+            constexpr std::array<std::uint8_t, sizeof(T)> get_array_byte_from_value(T value)
             {
                   if constexpr (sizeof(T) == 1)
                         return { static_cast<std::uint8_t>(value) };
@@ -37,7 +37,8 @@ namespace roro_lib
             }
 
             /*!   \brief  Constexpr ф-ия извлекает все значения из tuple и записывает их 
-                          в позицию полученного итератора
+                          в позицию полученного итератора, предварительно разбивая каждое
+                          знаение на отдельные байты
 
                   \param[in] t  -это tuple из которого мы извлекаем значения
                   \param[inout] it  -итератор в позицию которого мы сохраняем значения
@@ -47,7 +48,7 @@ namespace roro_lib
             {
                   if constexpr (I < sizeof...(Tp))
                   {
-                        auto byte_array = GetArrayByteFromValue(std::get<I>(t));
+                        auto byte_array = get_array_byte_from_value(std::get<I>(t));
                         it = std::copy(byte_array.begin(), byte_array.end(), it);
 
                         get_all_tuple_items<I + 1, It, Tp...>(t, it);
@@ -58,7 +59,7 @@ namespace roro_lib
                           разделяя выводимые в std::ostream байты точкой.
 
                   \param[in] container  -откуда мы берем байты
-                  \param[in] os  -поток ostream куда, мы выводим байты.
+                  \param[in] os  -поток ostream, куда мы выводим байты.
             */
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
@@ -82,7 +83,7 @@ namespace roro_lib
                 typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
       constexpr void output_ip(const T& value, std::ostream& os = std::cout)
       {
-            auto byte_array = internal::GetArrayByteFromValue(value);
+            auto byte_array = internal::get_array_byte_from_value(value);
             internal::output_ip_from(byte_array, os);
       }
 
@@ -114,7 +115,7 @@ namespace roro_lib
 
             for (const auto& item : cont)
             {
-                  auto byte_array = internal::GetArrayByteFromValue(item);
+                  auto byte_array = internal::get_array_byte_from_value(item);
                   It = std::copy(byte_array.begin(), byte_array.end(), It);
             }
 
@@ -130,8 +131,7 @@ namespace roro_lib
       template <typename T, typename... R>
       constexpr void output_ip(const std::tuple<T, R...>& tp, std::ostream& os = std::cout)
       {
-            static_assert(std::is_integral_v<T>, "all template parameter types of tuple should be the same integral types");
-            static_assert((std::is_same_v<T, R> && ...), "all template parameter types of tuple should be the same integral types");
+            static_assert(std::is_integral_v<T> && (std::is_same_v<T, R> && ...), "all template parameter types of tuple should be the same integral types");
 
             std::array<std::uint8_t, sizeof(T) * sizeof...(R) + 1> arr = { 0 };
             auto it = arr.begin();
