@@ -102,7 +102,7 @@ namespace roro_lib
 
       /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
                     который содержится в стандартном контейнере:                    
-                            vector, deque, list
+                            vector, deque или list
 
             \param[in] cont  -контейнер, содержащий ip-адрес
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
