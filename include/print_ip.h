@@ -95,12 +95,12 @@ namespace roro_lib
       */
       inline void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
       {
-            os << "12345678 ->" << str_ip << "<-- \n";
             os << str_ip << "\n";
       }
 
       /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
-                    который содержится в контейнере
+                    который содержится в стандартном контейнере:                    
+                            vector, deque, list или forward_list
 
             \param[in] cont  -контейнер, содержащий ip-адрес
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
