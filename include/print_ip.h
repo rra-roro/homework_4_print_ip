@@ -58,7 +58,7 @@ namespace roro_lib
                           разделяя выводимые в std::ostream байты точкой.
 
                   \param[in] container  -откуда мы берем байты
-                  \param[in] os  -поток ostream куда мы выводим байты.
+                  \param[in] os  -поток ostream куда, мы выводим байты.
             */
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
@@ -72,7 +72,12 @@ namespace roro_lib
             }
       }
 
+      /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
+                    который представлен в виде произвольного целочисленного типа.
 
+            \param[in] value  -целочисленное значение, содержащее ip-адрес
+            \param[in] os  -поток ostream, куда мы выводим ip-адрес
+      */
       template <typename T,
                 typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
       constexpr void output_ip(const T& value, std::ostream& os = std::cout)
@@ -81,12 +86,23 @@ namespace roro_lib
             internal::output_ip_from(byte_array, os);
       }
 
+      /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
+                    который представлен в виде строки.
+
+            \param[in] str_ip  -строковое значение, содержащее ip-адрес
+            \param[in] os  -поток ostream, куда мы выводим ip-адрес
+      */
       inline void output_ip(std::string_view str_ip, std::ostream& os = std::cout)
       {
             os << str_ip << "\n";
       }
 
+      /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
+                    который содержится в контейнере
 
+            \param[in] cont  -контейнер, содержащий ip-адрес
+            \param[in] os  -поток ostream, куда мы выводим ip-адрес
+      */
       template <typename T, typename Al, template <typename, typename> typename C>
       void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
@@ -105,6 +121,12 @@ namespace roro_lib
             internal::output_ip_from(vec, os);
       }
 
+      /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
+                    который содержится в кортеже
+
+            \param[in] tp  -кортеж, содержащий ip-адрес
+            \param[in] os  -поток ostream, куда мы выводим ip-адрес
+      */
       template <typename T, typename... R>
       constexpr void output_ip(const std::tuple<T, R...>& tp, std::ostream& os = std::cout)
       {
