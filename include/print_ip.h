@@ -6,16 +6,17 @@
 #include <tuple>
 #include <algorithm>
 
-// Compile-time ф-ия конвертации числа в массив байт.
-// Cледующие компиляторы выполняют вычиcление этой ф-ии в сompile-time:
-//     GCC 7.2 - yes
-//     Clang 5.0 - yes
-//     MSVC2017 19.16 - no
-
 namespace roro_lib
 {
       namespace internal
       {
+            /*!   \brief  Функция  разбивает целочисленное  входное значение  на массив  байт
+                          constexpr ф-ия разбивает целочисленное входное значение на массив байт.
+                          В начале массива размещаются старшие байты целочисленного значения.
+
+                  \param[in] value целочисленное значение, которое мы хотим разбить на байты
+                  \return возвращает массив байт, представляющих исходное значение
+            */
             template <typename T>
             constexpr std::array<std::uint8_t, sizeof(T)> GetArrayByteFromValue(T value)
             {
@@ -36,18 +37,32 @@ namespace roro_lib
                   }
             }
 
+            /*!   \brief  Ф-ия извлекает все значения из tuple и записывает их в позицию полученного итератора.
+                          constexpr ф-ия извлекает все значения из tuple и записывает их
+                          в позицию полученного итератора
+
+                  \param[in] t  это tuple из которого мы извлекаем значения
+                  \param[inout] it  итератор в позицию которого мы сохраняем значения
+            */
             template <std::size_t I = 0, typename It, typename... Tp>
-            constexpr void for_each(const std::tuple<Tp...>& t, It& it)
+            constexpr void get_all_tuple_items(const std::tuple<Tp...>& t, It& it)
             {
                   if constexpr (I < sizeof...(Tp))
                   {
                         auto byte_array = GetArrayByteFromValue(std::get<I>(t));
                         it = std::copy(byte_array.begin(), byte_array.end(), it);
 
-                        for_each<I + 1, It, Tp...>(t, it);
+                        get_all_tuple_items<I + 1, It, Tp...>(t, it);
                   }
             }
 
+            /*!   \brief  Ф-ия которая форматирует вывод полученного массива байт.
+                          Ф-ия которая форматирует вывод полученного массива байт,
+                          разделяя выводимые в std::ostream байты точкой.
+
+                  \param[in] container  в котором содержатся выводимые байты
+                  \param[in] os  поток ostream куда мы выводим байты.
+            */
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
             {
@@ -102,7 +117,7 @@ namespace roro_lib
             std::array<std::uint8_t, sizeof(T) * sizeof...(R) + 1> arr = { 0 };
             auto it = arr.begin();
 
-            internal::for_each<0, decltype(it)>(tp, it);
+            internal::get_all_tuple_items<0, decltype(it)>(tp, it);
 
             internal::output_ip_from(arr, os);
       }
