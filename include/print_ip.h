@@ -5,6 +5,8 @@
 #include <vector>
 #include <tuple>
 #include <algorithm>
+#include <type_traits>
+#include <cstdint>
 
 namespace roro_lib
 {
@@ -80,7 +82,7 @@ namespace roro_lib
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
       */
       template <typename T,
-                typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
+                typename std::enable_if_t<std::is_integral_v<T>>* = nullptr>
       constexpr void output_ip(const T& value, std::ostream& os = std::cout)
       {
             auto byte_array = internal::get_array_byte_from_value(value);
@@ -100,7 +102,7 @@ namespace roro_lib
 
       /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
                     который содержится в стандартном контейнере:                    
-                            vector, deque, list или forward_list
+                            vector, deque, list
 
             \param[in] cont  -контейнер, содержащий ip-адрес
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
@@ -109,7 +111,8 @@ namespace roro_lib
                 typename std::enable_if_t<
                                           std::is_same_v<T, typename C<T, Al>::value_type> &&
                                           std::is_same_v<Al, typename C<T, Al>::allocator_type> &&
-                                          std::is_base_of_v<std::forward_iterator_tag, typename C<T, Al>::iterator::iterator_category>,
+                                          std::is_base_of_v<std::forward_iterator_tag, typename C<T, Al>::iterator::iterator_category> &&
+                                          std::is_member_function_pointer_v<decltype(&C<T, Al>::size)>,
                                           int> = 0>
       void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
@@ -139,7 +142,7 @@ namespace roro_lib
       {
             static_assert(std::is_integral_v<T> && (std::is_same_v<T, R> && ...), "all template parameter types of tuple should be the same integral types");
 
-            std::array<std::uint8_t, sizeof(T) * sizeof...(R) + 1> arr = { 0 };
+            std::array<std::uint8_t, sizeof(T) * std::tuple_size_v<std::tuple<T, R...>>> arr = { 0 };
             auto it = arr.begin();
 
             internal::get_all_tuple_items<0, decltype(it)>(tp, it);

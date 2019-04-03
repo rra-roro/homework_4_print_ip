@@ -2,6 +2,11 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <tuple>
+#include <string>
+#include <cstdint>
+#include <exception>
+
 #include "lib_version.h"
 #include "CLParser.h"
 
@@ -60,7 +65,6 @@ int main(int argc, char* argv[])
             output_ip(std::vector<char>{ -1, -1, -1, -1 });
             output_ip(std::list<unsigned short>{ 49320, 257 });
             output_ip(std::make_tuple<std::int8_t, std::int8_t, std::int8_t, std::int8_t>(1, 1, 1, 1));
-
       }
       catch (const std::exception& ex)
       {
