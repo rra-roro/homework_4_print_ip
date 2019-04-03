@@ -44,8 +44,8 @@ namespace roro_lib
                   \param[inout] it  -итератор в позицию которого мы сохраняем значения
             */
             template <std::size_t I = 0, typename It, typename... Tp>
-            constexpr void get_all_tuple_items(const std::tuple<Tp...>& t, It& it)
-            {
+            constexpr void get_all_tuple_items([[maybe_unused]] const std::tuple<Tp...>& t, [[maybe_unused]] It& it)
+            {                  
                   if constexpr (I < sizeof...(Tp))
                   {
                         auto byte_array = get_array_byte_from_value(std::get<I>(t));
