@@ -64,7 +64,7 @@ namespace roro_lib
             template <typename T>
             inline void output_ip_from(const T& container, std::ostream& os)
             {
-                  const std::size_t  end_item = container.size() - 1;
+                  const std::size_t end_item = container.size() - 1;
                   for (std::size_t i = 0; i <= end_item; i++)
                   {
                         os << +container[i];
@@ -105,7 +105,12 @@ namespace roro_lib
             \param[in] cont  -контейнер, содержащий ip-адрес
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
       */
-      template <typename T, typename Al, template <typename, typename> typename C>
+      template <typename T, typename Al, template <typename, typename> typename C,
+                typename std::enable_if_t<
+                                          std::is_same_v<T, typename C<T, Al>::value_type> &&
+                                          std::is_same_v<Al, typename C<T, Al>::allocator_type> &&
+                                          std::is_base_of_v<std::forward_iterator_tag, typename C<T, Al>::iterator::iterator_category>,
+                                          int> = 0>
       void output_ip(const C<T, Al>& cont, std::ostream& os = std::cout)
       {
             static_assert(std::is_integral_v<T>, "template parameter type of container should be integral type");
