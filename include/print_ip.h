@@ -104,7 +104,7 @@ namespace roro_lib
       /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
                     который содержится в стандартном контейнере:                    
                             vector, deque или list
-                    или с любым контейнером, удовлетворяющим условию:
+                    или в любом другом контейнере, удовлетворяющем условию:
                     1) налиие forward_iterator
                     2) наличие ф-ии члена size()
 
@@ -113,7 +113,7 @@ namespace roro_lib
       */
       template <typename T, typename Al, template <typename, typename> typename C,
                 typename std::enable_if_t<
-                                         // следующие два критерия исключают обработку std:: string этой функцией.
+                                         // следующие два критерия исключают применение этой ф-ии к std::string 
                                           std::is_same_v<T, typename C<T, Al>::value_type> &&                     
                                           std::is_same_v<Al, typename C<T, Al>::allocator_type> &&         
                                           std::is_base_of_v<std::forward_iterator_tag,
