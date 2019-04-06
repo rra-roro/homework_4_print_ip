@@ -104,14 +104,18 @@ namespace roro_lib
       /*!   \brief  Ф-ия реализует функцию печати условного ip-адреса,
                     который содержится в стандартном контейнере:                    
                             vector, deque или list
+                    или с любым контейнером, удовлетворяющим условию:
+                    1) налиие forward_iterator
+                    2) наличие ф-ии члена size()
 
             \param[in] cont  -контейнер, содержащий ip-адрес
             \param[in] os  -поток ostream, куда мы выводим ip-адрес
       */
       template <typename T, typename Al, template <typename, typename> typename C,
                 typename std::enable_if_t<
-                                          std::is_same_v<T, typename C<T, Al>::value_type> &&
-                                          std::is_same_v<Al, typename C<T, Al>::allocator_type> &&
+                                         // следующие два критерия исключают обработку std:: string этой функцией.
+                                          std::is_same_v<T, typename C<T, Al>::value_type> &&                     
+                                          std::is_same_v<Al, typename C<T, Al>::allocator_type> &&         
                                           std::is_base_of_v<std::forward_iterator_tag,
                                                             typename C<T, Al>::iterator::iterator_category> &&
                                           std::is_member_function_pointer_v<decltype(&C<T, Al>::size)>,
