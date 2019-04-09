@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>print_ip: Пространство имен roro_lib</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">print_ip
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.6 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li><a href="namespacemembers.html"><span>Члены&#160;пространств&#160;имен</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Пространства имен</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Пространство имен roro_lib</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Пространства имен</h2></td></tr>
+<tr class="memitem:namespaceroro__lib_1_1internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceroro__lib_1_1internal.html">internal</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ac1ec79a4f277eafb7df2e34e8256d09e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename std::enable_if_t&lt; std::is_integral_v&lt; T &gt;&gt; *  = nullptr&gt; </td></tr>
+<tr class="memitem:ac1ec79a4f277eafb7df2e34e8256d09e"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">output_ip</a> (const T &amp;value, std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:ac1ec79a4f277eafb7df2e34e8256d09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ф-ия реализует функцию печати условного ip-адреса, который представлен в виде произвольного целочисленного типа.  <a href="#ac1ec79a4f277eafb7df2e34e8256d09e">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac1ec79a4f277eafb7df2e34e8256d09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527761f2e3702886089b63bbd55d9385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceroro__lib.html#a527761f2e3702886089b63bbd55d9385">output_ip</a> (std::string_view str_ip, std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:a527761f2e3702886089b63bbd55d9385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ф-ия реализует функцию печати условного ip-адреса, который представлен в виде строки.  <a href="#a527761f2e3702886089b63bbd55d9385">Подробнее...</a><br/></td></tr>
+<tr class="separator:a527761f2e3702886089b63bbd55d9385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac099f0f7c86d48a2787f1d8ba1f55a1e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Al , template&lt; typename, typename &gt; typename C, typename std::enable_if_t&lt; std::is_same_v&lt; T, typename C&lt; T, Al &gt;::value_type &gt; &amp;&amp;std::is_same_v&lt; Al, typename C&lt; T, Al &gt;::allocator_type &gt; &amp;&amp;std::is_base_of_v&lt; std::forward_iterator_tag, typename C&lt; T, Al &gt;::iterator::iterator_category &gt; &amp;&amp;std::is_member_function_pointer_v&lt; decltype(&amp;C&lt; T, Al &gt;::size)&gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ac099f0f7c86d48a2787f1d8ba1f55a1e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib.html#ac099f0f7c86d48a2787f1d8ba1f55a1e">output_ip</a> (const C&lt; T, Al &gt; &amp;cont, std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:ac099f0f7c86d48a2787f1d8ba1f55a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ф-ия реализует функцию печати условного ip-адреса, который содержится в стандартном контейнере: vector, deque или list или в любом другом контейнере, удовлетворяющем условию: 1) налиие forward_iterator 2) наличие ф-ии члена size()  <a href="#ac099f0f7c86d48a2787f1d8ba1f55a1e">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac099f0f7c86d48a2787f1d8ba1f55a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0823298fe122855fcbd9c23013daada6"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... R&gt; </td></tr>
+<tr class="memitem:a0823298fe122855fcbd9c23013daada6"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib.html#a0823298fe122855fcbd9c23013daada6">output_ip</a> (const std::tuple&lt; T, R...&gt; &amp;tp, std::ostream &amp;os=std::cout)</td></tr>
+<tr class="memdesc:a0823298fe122855fcbd9c23013daada6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ф-ия реализует функцию печати условного ip-адреса, который содержится в кортеже  <a href="#a0823298fe122855fcbd9c23013daada6">Подробнее...</a><br/></td></tr>
+<tr class="separator:a0823298fe122855fcbd9c23013daada6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a class="anchor" id="ac1ec79a4f277eafb7df2e34e8256d09e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename std::enable_if_t&lt; std::is_integral_v&lt; T &gt;&gt; *  = nullptr&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void roro_lib::output_ip </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em> = <code>std::cout</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ф-ия реализует функцию печати условного ip-адреса, который представлен в виде произвольного целочисленного типа. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>-целочисленное значение, содержащее ip-адрес </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">os</td><td>-поток ostream, куда мы выводим ip-адрес </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a527761f2e3702886089b63bbd55d9385"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void roro_lib::output_ip </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>str_ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em> = <code>std::cout</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ф-ия реализует функцию печати условного ip-адреса, который представлен в виде строки. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str_ip</td><td>-строковое значение, содержащее ip-адрес </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">os</td><td>-поток ostream, куда мы выводим ip-адрес </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac099f0f7c86d48a2787f1d8ba1f55a1e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Al , template&lt; typename, typename &gt; typename C, typename std::enable_if_t&lt; std::is_same_v&lt; T, typename C&lt; T, Al &gt;::value_type &gt; &amp;&amp;std::is_same_v&lt; Al, typename C&lt; T, Al &gt;::allocator_type &gt; &amp;&amp;std::is_base_of_v&lt; std::forward_iterator_tag, typename C&lt; T, Al &gt;::iterator::iterator_category &gt; &amp;&amp;std::is_member_function_pointer_v&lt; decltype(&amp;C&lt; T, Al &gt;::size)&gt;, int &gt;  = 0&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void roro_lib::output_ip </td>
+          <td>(</td>
+          <td class="paramtype">const C&lt; T, Al &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cont</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em> = <code>std::cout</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ф-ия реализует функцию печати условного ip-адреса, который содержится в стандартном контейнере: vector, deque или list или в любом другом контейнере, удовлетворяющем условию: 1) налиие forward_iterator 2) наличие ф-ии члена size() </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cont</td><td>-контейнер, содержащий ip-адрес </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">os</td><td>-поток ostream, куда мы выводим ip-адрес </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0823298fe122855fcbd9c23013daada6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... R&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void roro_lib::output_ip </td>
+          <td>(</td>
+          <td class="paramtype">const std::tuple&lt; T, R...&gt; &amp;&#160;</td>
+          <td class="paramname"><em>tp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em> = <code>std::cout</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ф-ия реализует функцию печати условного ip-адреса, который содержится в кортеже </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>-кортеж, содержащий ip-адрес </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">os</td><td>-поток ostream, куда мы выводим ip-адрес </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

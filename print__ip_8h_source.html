@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>print_ip: Исходный файл include/print_ip.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">print_ip
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.6 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li class="current"><a href="files.html"><span>Файлы</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Файлы</span></a></li>
+      <li><a href="globals.html"><span>Список&#160;членов&#160;всех&#160;файлов</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">print_ip.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="print__ip_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespaceroro__lib.html">   11</a></span>&#160;<span class="keyword">namespace </span>roro_lib</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespaceroro__lib_1_1internal.html">   13</a></span>&#160;      <span class="keyword">namespace </span>internal</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">   22</a></span>&#160;            constexpr std::array&lt;std::uint8_t, sizeof(T)&gt; <a class="code" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">get_array_byte_from_value</a>(T value)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                  <span class="keywordflow">if</span> constexpr (<span class="keyword">sizeof</span>(T) == 1)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                        <span class="keywordflow">return</span> { <span class="keyword">static_cast&lt;</span>std::uint8_t<span class="keyword">&gt;</span>(value) };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                  {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        std::array&lt;std::uint8_t, sizeof(T)&gt; arr = { 0 };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keyword">const</span> std::size_t size_value = <span class="keyword">sizeof</span>(value) - 1;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = size_value; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                              arr[size_value - i] = <span class="keyword">static_cast&lt;</span>std::uint8_t<span class="keyword">&gt;</span>(value &gt;&gt; (i * 8));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        <span class="keywordflow">return</span> arr;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                  }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">template</span> &lt;std::size_t I = 0, <span class="keyword">typename</span> It, <span class="keyword">typename</span>... Tp&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespaceroro__lib_1_1internal.html#ab9c54e6dbcc2c09069591b69a5640c1c">   49</a></span>&#160;            constexpr <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib_1_1internal.html#ab9c54e6dbcc2c09069591b69a5640c1c">get_all_tuple_items</a>([[maybe_unused]] <span class="keyword">const</span> std::tuple&lt;Tp...&gt;&amp; t,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                               [[maybe_unused]] It&amp; it)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {                  </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                  <span class="keywordflow">if</span> constexpr (I &lt; <span class="keyword">sizeof</span>...(Tp))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        <span class="keyword">auto</span> byte_array = <a class="code" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">get_array_byte_from_value</a>(std::get&lt;I&gt;(t));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        it = std::copy(byte_array.begin(), byte_array.end(), it);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <a class="code" href="namespaceroro__lib_1_1internal.html#ab9c54e6dbcc2c09069591b69a5640c1c">get_all_tuple_items</a>&lt;I + 1, It, Tp...&gt;(t, it);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                  }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">   68</a></span>&#160;            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">output_ip_from</a>(<span class="keyword">const</span> T&amp; container, std::ostream&amp; os)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                  <span class="keyword">const</span> std::size_t end_item = container.size() - 1;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                  <span class="keywordflow">for</span> (std::size_t i = 0; i &lt;= end_item; i++)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                  {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        os &lt;&lt; +container[i];</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        os &lt;&lt; ((i != end_item) ? <span class="stringliteral">&quot;.&quot;</span> : <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;std::is_integral_v&lt;T&gt;&gt;* = <span class="keyword">nullptr</span>&gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">   87</a></span>&#160;      constexpr <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">output_ip</a>(<span class="keyword">const</span> T&amp; value, std::ostream&amp; os = std::cout)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">auto</span> byte_array = <a class="code" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">internal::get_array_byte_from_value</a>(value);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">internal::output_ip_from</a>(byte_array, os);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="namespaceroro__lib.html#a527761f2e3702886089b63bbd55d9385">   99</a></span>&#160;      <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">output_ip</a>(std::string_view str_ip, std::ostream&amp; os = std::cout)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            os &lt;&lt; str_ip &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Al, <span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>&gt; <span class="keyword">typename</span> C,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keyword">typename</span> std::enable_if_t&lt;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                         <span class="comment">// следующие два критерия исключают применение этой ф-ии к std::string </span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                          std::is_same_v&lt;T, typename C&lt;T, Al&gt;::value_type&gt; &amp;&amp;                     </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                          std::is_same_v&lt;Al, typename C&lt;T, Al&gt;::allocator_type&gt; &amp;&amp;         </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                          std::is_base_of_v&lt;std::forward_iterator_tag,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                                            <span class="keyword">typename</span> C&lt;T, Al&gt;::iterator::iterator_category&gt; &amp;&amp;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                          std::is_member_function_pointer_v&lt;decltype(&amp;C&lt;T, Al&gt;::size)&gt;,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                          <span class="keywordtype">int</span>&gt; = 0&gt;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="namespaceroro__lib.html#ac099f0f7c86d48a2787f1d8ba1f55a1e">  123</a></span>&#160;      <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">output_ip</a>(<span class="keyword">const</span> C&lt;T, Al&gt;&amp; cont, std::ostream&amp; os = std::cout)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            static_assert(std::is_integral_v&lt;T&gt;,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                          <span class="stringliteral">&quot;template parameter type of container should be integral type&quot;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            std::vector&lt;std::uint8_t&gt; vec(<span class="keyword">sizeof</span>(T) * cont.size());</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keyword">auto</span> It = vec.begin();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; item : cont)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                  <span class="keyword">auto</span> byte_array = <a class="code" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">internal::get_array_byte_from_value</a>(item);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                  It = std::copy(byte_array.begin(), byte_array.end(), It);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">internal::output_ip_from</a>(vec, os);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... R&gt;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="namespaceroro__lib.html#a0823298fe122855fcbd9c23013daada6">  148</a></span>&#160;      constexpr <span class="keywordtype">void</span> <a class="code" href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">output_ip</a>(<span class="keyword">const</span> std::tuple&lt;T, R...&gt;&amp; tp, std::ostream&amp; os = std::cout)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            static_assert(std::is_integral_v&lt;T&gt; &amp;&amp; (std::is_same_v&lt;T, R&gt; &amp;&amp; ...),</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                          <span class="stringliteral">&quot;all template parameter types of tuple should be the same integral types&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            std::array&lt;std::uint8_t, <span class="keyword">sizeof</span>(T) * std::tuple_size_v&lt;std::tuple&lt;T, R...&gt;&gt;&gt; arr = { 0 };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keyword">auto</span> it = arr.begin();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            internal::get_all_tuple_items&lt;0, decltype(it)&gt;(tp, it);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <a class="code" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">internal::output_ip_from</a>(arr, os);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="ttc" id="namespaceroro__lib_1_1internal_html_ab9c54e6dbcc2c09069591b69a5640c1c"><div class="ttname"><a href="namespaceroro__lib_1_1internal.html#ab9c54e6dbcc2c09069591b69a5640c1c">roro_lib::internal::get_all_tuple_items</a></div><div class="ttdeci">constexpr void get_all_tuple_items([[maybe_unused]] const std::tuple&lt; Tp...&gt; &amp;t, [[maybe_unused]] It &amp;it)</div><div class="ttdoc">Constexpr ф-ия извлекает все значения из tuple и записывает их в позицию полученного итератора...</div><div class="ttdef"><b>Definition:</b> print_ip.h:49</div></div>
+<div class="ttc" id="namespaceroro__lib_html_ac1ec79a4f277eafb7df2e34e8256d09e"><div class="ttname"><a href="namespaceroro__lib.html#ac1ec79a4f277eafb7df2e34e8256d09e">roro_lib::output_ip</a></div><div class="ttdeci">constexpr void output_ip(const T &amp;value, std::ostream &amp;os=std::cout)</div><div class="ttdoc">Ф-ия реализует функцию печати условного ip-адреса, который представлен в виде произвольного целочисле...</div><div class="ttdef"><b>Definition:</b> print_ip.h:87</div></div>
+<div class="ttc" id="namespaceroro__lib_1_1internal_html_a9dcc9b0e3e837aedece4376513d1f3c9"><div class="ttname"><a href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">roro_lib::internal::get_array_byte_from_value</a></div><div class="ttdeci">constexpr std::array&lt; std::uint8_t, sizeof(T)&gt; get_array_byte_from_value(T value)</div><div class="ttdoc">Constexpr ф-ия разбивает целочисленное входное значение на массив байт. В начале массива размещаются ...</div><div class="ttdef"><b>Definition:</b> print_ip.h:22</div></div>
+<div class="ttc" id="namespaceroro__lib_1_1internal_html_ac2a6ae0f4e229ffc700562575cccebed"><div class="ttname"><a href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">roro_lib::internal::output_ip_from</a></div><div class="ttdeci">void output_ip_from(const T &amp;container, std::ostream &amp;os)</div><div class="ttdoc">Ф-ия, которая форматирует вывод полученного массива байт, разделяя выводимые в std::ostream байты точ...</div><div class="ttdef"><b>Definition:</b> print_ip.h:68</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

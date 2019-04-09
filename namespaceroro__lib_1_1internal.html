@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>print_ip: Пространство имен roro_lib::internal</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">print_ip
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.6 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Титульная&#160;страница</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li><a href="files.html"><span>Файлы</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="namespaces.html"><span>Пространства&#160;имен</span></a></li>
+      <li><a href="namespacemembers.html"><span>Члены&#160;пространств&#160;имен</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceroro__lib.html">roro_lib</a></li><li class="navelem"><a class="el" href="namespaceroro__lib_1_1internal.html">internal</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Пространство имен roro_lib::internal</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a9dcc9b0e3e837aedece4376513d1f3c9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9dcc9b0e3e837aedece4376513d1f3c9"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::array<br class="typebreak"/>
+&lt; std::uint8_t, sizeof(T)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib_1_1internal.html#a9dcc9b0e3e837aedece4376513d1f3c9">get_array_byte_from_value</a> (T value)</td></tr>
+<tr class="memdesc:a9dcc9b0e3e837aedece4376513d1f3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constexpr ф-ия разбивает целочисленное входное значение на массив байт. В начале массива размещаются старшие байты целочисленного значения.  <a href="#a9dcc9b0e3e837aedece4376513d1f3c9">Подробнее...</a><br/></td></tr>
+<tr class="separator:a9dcc9b0e3e837aedece4376513d1f3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c54e6dbcc2c09069591b69a5640c1c"><td class="memTemplParams" colspan="2">template&lt;std::size_t I = 0, typename It , typename... Tp&gt; </td></tr>
+<tr class="memitem:ab9c54e6dbcc2c09069591b69a5640c1c"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib_1_1internal.html#ab9c54e6dbcc2c09069591b69a5640c1c">get_all_tuple_items</a> ([[maybe_unused]] const std::tuple&lt; Tp...&gt; &amp;t, [[maybe_unused]] It &amp;it)</td></tr>
+<tr class="memdesc:ab9c54e6dbcc2c09069591b69a5640c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constexpr ф-ия извлекает все значения из tuple и записывает их в позицию полученного итератора, предварительно разбивая каждое знаение на отдельные байты  <a href="#ab9c54e6dbcc2c09069591b69a5640c1c">Подробнее...</a><br/></td></tr>
+<tr class="separator:ab9c54e6dbcc2c09069591b69a5640c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a6ae0f4e229ffc700562575cccebed"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac2a6ae0f4e229ffc700562575cccebed"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceroro__lib_1_1internal.html#ac2a6ae0f4e229ffc700562575cccebed">output_ip_from</a> (const T &amp;container, std::ostream &amp;os)</td></tr>
+<tr class="memdesc:ac2a6ae0f4e229ffc700562575cccebed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ф-ия, которая форматирует вывод полученного массива байт, разделяя выводимые в std::ostream байты точкой.  <a href="#ac2a6ae0f4e229ffc700562575cccebed">Подробнее...</a><br/></td></tr>
+<tr class="separator:ac2a6ae0f4e229ffc700562575cccebed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a class="anchor" id="ab9c54e6dbcc2c09069591b69a5640c1c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::size_t I = 0, typename It , typename... Tp&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void roro_lib::internal::get_all_tuple_items </td>
+          <td>(</td>
+          <td class="paramtype">[[maybe_unused] ] const std::tuple&lt; Tp...&gt; &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">[[maybe_unused] ] It &amp;&#160;</td>
+          <td class="paramname"><em>it</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constexpr ф-ия извлекает все значения из tuple и записывает их в позицию полученного итератора, предварительно разбивая каждое знаение на отдельные байты </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>-это tuple из которого мы извлекаем значения </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">it</td><td>-итератор в позицию которого мы сохраняем значения </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9dcc9b0e3e837aedece4376513d1f3c9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;std::uint8_t, sizeof(T)&gt; roro_lib::internal::get_array_byte_from_value </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constexpr ф-ия разбивает целочисленное входное значение на массив байт. В начале массива размещаются старшие байты целочисленного значения. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>-целочисленное значение, которое мы хотим разбить на байты </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>массив байт, представляющих исходное значение </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac2a6ae0f4e229ffc700562575cccebed"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void roro_lib::internal::output_ip_from </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ф-ия, которая форматирует вывод полученного массива байт, разделяя выводимые в std::ostream байты точкой. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">container</td><td>-откуда мы берем байты </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">os</td><td>-поток ostream, куда мы выводим байты. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>
